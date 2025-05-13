@@ -1,4 +1,14 @@
 theme = catppuccin-mocha
+
+window-height = 36
+window-width = 120
+
 font-family = CaskaydiaCove Nerd Font
 font-size = 16
+font-thicken = true
+
+mouse-hide-while-typing = true
+focus-follows-mouse = true
+
 gtk-titlebar = true
+macos-titlebar-proxy-icon = hidden

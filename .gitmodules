@@ -4,3 +4,6 @@
 [submodule "zsh/.config/zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = zsh/.config/zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "ghostty/.config/ghostty/shaders"]
+	path = ghostty/.config/ghostty/shaders
+	url = https://github.com/hackr-sh/ghostty-shaders
