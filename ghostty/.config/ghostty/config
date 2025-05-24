@@ -1,3 +1,4 @@
+# custom-shader = shaders/bettercrt.glsl
 theme = catppuccin-mocha
 
 window-height = 36

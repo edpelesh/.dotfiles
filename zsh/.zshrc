@@ -5,7 +5,12 @@ export XDG_DATA_HOME=$HOME/.local/share
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
-export ZSH=$XDG_DATA_HOME/oh-my-zsh
+
+if [[ -r "$XDG_DATA_HOME/oh-my-zsh" ]]; then
+  export ZSH=$XDG_DATA_HOME/oh-my-zsh
+else
+  export ZSH=$HOME/.oh-my-zsh
+fi
 
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
