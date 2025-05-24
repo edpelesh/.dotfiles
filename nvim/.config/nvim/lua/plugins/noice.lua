@@ -8,6 +8,9 @@ return {
 		},
 		config = function()
 			require("noice").setup({
+				cmdline = {
+					view = "cmdline",
+				},
 				lsp = {
 					override = {
 						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -17,6 +20,9 @@ return {
 				},
 				presets = {
 					lsp_doc_border = true,
+					command_palette = false,
+					inc_rename = false,
+					bottom_search = true,
 				},
 			})
 		end,

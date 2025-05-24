@@ -2,7 +2,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export ZCONFIG=$XDG_CONFIG_HOME/zsh
+export ZDOTDIR=$HOME
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 
@@ -21,7 +22,7 @@ export TERM="xterm-256color"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-[[ ! -f "${ZDOTDIR}/.p10k.zsh" ]] || source "${ZDOTDIR}/.p10k.zsh"
+[[ ! -f "${ZCONFIG}/.p10k.zsh" ]] || source "${ZCONFIG}/.p10k.zsh"
 
 if [[ -n $SSH_CONNECTION ]]; then
 	export EDITOR='vi'
@@ -29,7 +30,7 @@ else
 	export EDITOR='nvim'
 fi
 
-ZSH_CUSTOM=$ZDOTDIR/custom
+ZSH_CUSTOM=$ZCONFIG/custom
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 DISABLE_AUTO_UPDATE="false"
@@ -44,8 +45,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd.mm.yyyy"
 
 plugins=()
+plugins+=(zsh-autosuggestions)
 plugins+=(zsh-syntax-highlighting)
 plugins+=(git)
+plugins+=(tmux)
 source $ZSH/oh-my-zsh.sh
 
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
