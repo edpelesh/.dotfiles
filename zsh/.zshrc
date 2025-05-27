@@ -104,8 +104,15 @@ bindkey "^[[1;2C" forward-word
 bindkey "^[[1;2A" beginning-of-line
 bindkey "^[[1;2B" end-of-line
 
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+if [[ -r "$(which eza)" ]]; then
+	alias ls="eza"
+	alias ll="eza -alh"
+	alias tree="eza --tree"
+fi
+if [[ -r "$(which bat)" ]]; then
+	alias cat="bat -p"
+fi
+
 alias vi="nvim"
 alias vim="nvim"
 alias unstow='stow --delete'
