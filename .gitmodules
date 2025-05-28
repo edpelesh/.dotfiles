@@ -9,7 +9,7 @@
 	url = https://github.com/hackr-sh/ghostty-shaders
 [submodule "zsh/.config/zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.config/zsh/custom/plugins/zsh-autosuggestions
-	url = git@github.com:zsh-users/zsh-autosuggestions.git
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
-	url = git@github.com:tmux-plugins/tpm.git
+	url = https://github.com/tmux-plugins/tpm.git
