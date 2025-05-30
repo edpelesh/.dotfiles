@@ -96,6 +96,7 @@ fi
 typeset -U PATH path
 
 source <(fzf --zsh)
+eval "$(zoxide init zsh)"
 
 # Bindkeys - use sudo showkey -a to get sequences
 # Shift-Left / Shift-Right
