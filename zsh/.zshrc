@@ -79,7 +79,6 @@ export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-source <(fzf --zsh)
 
 # Force re-completion
 autoload -U compinit && compinit
@@ -95,6 +94,8 @@ if [ -d "$HOME/Library/Python/3.9/bin" ]; then
 	export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 fi
 typeset -U PATH path
+
+source <(fzf --zsh)
 
 # Bindkeys - use sudo showkey -a to get sequences
 # Shift-Left / Shift-Right
