@@ -19,6 +19,14 @@ export LANGUAGE=en
 export LC_ALL="${LANG}"
 export TERM="xterm-256color"
 
+if [[ -n $SSH_CONNECTION ]]; then
+  SESSION_TYPE=ssh
+elif [[ -n $DISPLAY || -n $WAYLAND_DISPLAY ]]; then
+  SESSION_TYPE=gui
+else
+  SESSION_TYPE=tty
+fi
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -31,7 +39,17 @@ else
 fi
 
 ZSH_CUSTOM=$ZCONFIG/custom
-ZSH_THEME="powerlevel10k/powerlevel10k"
+case "$SESSION_TYPE" in
+  gui)
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+    ;;
+  ssh)
+    ZSH_THEME="robbyrussell"
+    ;;
+  tty)
+    ZSH_THEME="minimal"
+    ;;
+esac
 
 DISABLE_AUTO_UPDATE="false"
 DISABLE_UPDATE_PROMPT="true"
@@ -83,7 +101,7 @@ export FZF_CTRL_T_OPTS="
 # Force re-completion
 autoload -U compinit && compinit
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/opt/gcc-14.2.0-3-aarch64/bin/:$PATH
 if [ -d "$HOME/bin" ]; then
 	export PATH="$HOME/bin:$PATH"
 fi
