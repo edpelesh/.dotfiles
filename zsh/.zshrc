@@ -44,10 +44,10 @@ case "$SESSION_TYPE" in
     ZSH_THEME="powerlevel10k/powerlevel10k"
     ;;
   ssh)
-    ZSH_THEME="robbyrussell"
+    ZSH_THEME="crcandy"
     ;;
   tty)
-    ZSH_THEME="minimal"
+    ZSH_THEME="crcandy"
     ;;
 esac
 
