@@ -3,9 +3,9 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
 export ZCONFIG=$XDG_CONFIG_HOME/zsh
+export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export ZDOTDIR=$HOME
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
-export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 
 if [[ -r "$XDG_DATA_HOME/oh-my-zsh" ]]; then
   export ZSH=$XDG_DATA_HOME/oh-my-zsh
