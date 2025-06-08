@@ -9,6 +9,7 @@ font-size = 16
 font-thicken = true
 
 mouse-hide-while-typing = true
+confirm-close-surface = false
 focus-follows-mouse = true
 
 gtk-titlebar = true
