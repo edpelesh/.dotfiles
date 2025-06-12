@@ -51,8 +51,9 @@ update_output() {
 	progress=$(printf '%-*s' "$bar_len" "$progress" | tr ' ' '░')
 
 	jq -nc --arg icon "$icon" --arg mode "$mode" --arg temp "$temp" --arg progress "$progress" \
-		'{"text": $icon, "tooltip": "Mode: \($mode)\nTemp: \($temp)K\n[\($progress)]"}'
-	}
+		'{"text": $icon}'
+#		'{"text": $icon, "tooltip": "Mode: \($mode)\nTemp: \($temp)K\n[\($progress)]"}'
+}
 
 case "$1" in
 	click)

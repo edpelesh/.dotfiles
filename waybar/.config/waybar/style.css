@@ -100,3 +100,17 @@ window#waybar {
 #custom-poweroff:hover {
 	background: @base;
 }
+
+#custom-hyprsunset {
+	padding: 2px 10px 3px 7px;
+	margin: 11px 0 11px 10px;
+	font-size: 17px;
+	font-weight: bold;
+	background: @sky;
+	border-radius: 5px;
+	transition: background 0.3s ease-out;
+	color: @base;
+}
+#custom-hyprsunset:hover {
+	background: @sapphire;
+}
