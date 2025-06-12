@@ -1,0 +1,109 @@
+#!/bin/bash
+
+set -euo pipefail
+
+MAX_WAIT_TIME=30
+POLL_INTERVAL=1
+APPS_TO_CLOSE=(firefox mpv obs)
+
+log() {
+	echo "[$(date '+%H:%M:%S')] $1" >&2
+}
+
+wait_for_processes() {
+	local max_wait="$1"
+	local waited=0
+
+	while true; do
+		still_running=false
+		for app in "${APPS_TO_CLOSE[@]}"; do
+			if pgrep -x "$app" >/dev/null 2>&1; then
+				still_running=true
+				break 
+			fi
+		done
+
+		if ! $still_running; then
+			return 0
+		fi
+
+		if [ "$waited" -ge "$max_wait" ]; then
+			log "Timeout waiting for apps to close"
+			return 1
+		fi
+
+		sleep "$POLL_INTERVAL"
+		waited=$((waited + POLL_INTERVAL))
+	done
+}
+
+check_firefox_safety() {
+	local count=0
+	count=$(hyprctl clients 2>/dev/null | grep -c "class: firefox" || echo "0")
+	if [ "$count" -gt 1 ]; then
+		log "Multiple Firefox windows open ($count). Aborting logout."
+		exit 1
+	fi
+}
+
+close_all_clients_via_hyprctl() {
+	local clients_json
+	clients_json=$(hyprctl -j clients 2>/dev/null || echo "[]")
+
+	if [ "$(echo "$clients_json" | jq length)" -eq 0 ]; then
+		log "No clients to close."
+		return 0
+	fi
+
+	log "Dispatching closewindow to all clients via hyprctl..."
+	echo "$clients_json" | jq -r '.[] | "dispatch closewindow address:\(.address);"' | \
+		tr -d '\n' | xargs -r -0 hyprctl --batch >/dev/null 2>&1 || \
+		log "Some windows failed to close"
+}
+
+force_kill_leftovers() {
+	log "Force kill leftover apps..."
+	for app in "${APPS_TO_CLOSE[@]}"; do
+		pkill -9 "$app" 2>/dev/null || true
+	done
+}
+
+stop_audio_services() {
+	log "Stopping audio (pipewire, wireplumber)..."
+	pkill -15 pipewire wireplumber 2>/dev/null || true
+	sleep 2
+	pkill -9 pipewire wireplumber 2>/dev/null || true
+}
+
+get_remaining_clients() {
+	hyprctl clients 2>/dev/null | grep -c "class:" || echo 0
+}
+
+main() {
+	log "Starting logout sequence..."
+	#check_firefox_safety
+	stop_audio_services
+	#close_all_clients_via_hyprctl
+
+	for app in "${APPS_TO_CLOSE[@]}"; do
+		pkill -15 "$app" 2>/dev/null || true
+	done
+
+	wait_for_processes "$MAX_WAIT_TIME" || {
+		log "Some apps didn't close in time."
+	}
+
+	force_kill_leftovers
+
+	remaining=$(get_remaining_clients)
+	if [ "$remaining" -eq 0 ]; then
+		log "All clients closed. Logging out..."
+		exec hyprctl dispatch exit
+	else
+		log "Still $remaining client(s) left. Forcing logout anyway..."
+		exec hyprctl dispatch exit
+	fi
+}
+
+main "$0"
+

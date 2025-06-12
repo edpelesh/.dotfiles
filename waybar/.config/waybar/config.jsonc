@@ -1,0 +1,56 @@
+{
+	"layer": "bottom",
+	"position": "top",
+	"height": 48,
+	"margin": "6px 6px 0 6px",
+
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": ["hyprland/window"],
+	"modules-right": [
+		"battery",
+		"clock",
+		"custom/poweroff"
+	],
+	"hyprland/workspaces": {
+		"format": "{name}",
+		"disable-scroll": true
+	},
+	"hyprland/window": {
+		"max-length": 80,
+		"tooltip": false
+	},
+	"clock": {
+		"format": "{:%a %d %b %H:%M}",
+		"tooltip": false
+	},
+	"battery": {
+		"format": "{capacity}% {icon}",
+//		"format-alt": "{time} {icon}",
+		"format-icons": ["", "", "", "", ""],
+		"format-time": "{H}h {M}m",
+		"format-charging": "{capacity}%",
+		"interval": 30,
+		"states": {
+			"warning": 25,
+			"critical": 10
+		},
+		"tooltip": false
+	},
+	"custom/poweroff": {
+		"format": "\uf011",
+		"tooltip": false,
+		"on-click": "loginctl poweroff",
+		"on-click-right": "~/.config/hypr/scripts/logout-clean"
+	},
+	"custom/hyprsunset": {
+		"format": "{}",
+		"exec": "~/.config/waybar/scripts/hyprsunset_mode.sh",
+		"interval": 5,
+		"return-type": "json",
+		"on-click": "~/.config/waybar/scripts/hyprsunset_mode.sh click",
+		"on-scroll-up": "~/.config/waybar/scripts/hyprsunset_mode.sh scroll-up",
+		"on-scroll-down": "~/.config/waybar/scripts/hyprsunset_mode.sh scroll-down"
+	}
+}
