@@ -11,7 +11,7 @@
 }
 
 window#waybar {
-	background-color: @crust;
+	background: @crust;
 	border: 4px solid @surface0;
 	border-radius: 10px;
 }
@@ -19,6 +19,8 @@ window#waybar {
 #window {
 	color: @text;
 	font-weight: bold;
+	border-radius: 10px;
+	background: transparent;
 }
 
 #workspaces {
@@ -58,6 +60,7 @@ window#waybar {
 	font-weight: bold;
 	margin: 0 2px 0 0;
 	padding: 0 6px;
+	background: none;
 }
 
 #battery {
@@ -88,7 +91,7 @@ window#waybar {
 }
 
 #custom-poweroff {
-	background: none;
+	background: transparent;
 	font-weight: bold;
 	border-radius: 5px;
 	padding: 2px 10px 3px 5px;

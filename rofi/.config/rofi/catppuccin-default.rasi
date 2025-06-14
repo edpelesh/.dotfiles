@@ -86,8 +86,9 @@ window {
     padding:          8px;
     background-color: @background;
     border:           4px;
-	border-radius:    10px;
+    border-radius:    10px;
     border-color:     @green;
+    height:           480px;
 }
 mainbox {
     padding: 8px;

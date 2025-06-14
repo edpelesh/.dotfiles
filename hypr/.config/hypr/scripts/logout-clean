@@ -80,6 +80,7 @@ get_remaining_clients() {
 }
 
 main() {
+	notify-send "Starting logout sequence..."
 	log "Starting logout sequence..."
 	#check_firefox_safety
 	stop_audio_services
