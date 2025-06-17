@@ -18,6 +18,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en
 export LC_ALL="${LANG}"
 export TERM="xterm-256color"
+export GOPATH=$HOME/.local/go
 
 if [[ -n $SSH_CONNECTION ]]; then
   SESSION_TYPE=ssh
@@ -93,11 +94,6 @@ do
 	fi
 done
 
-export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview 'bat -n --color=always {}'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-
 # Force re-completion
 autoload -U compinit && compinit
 
@@ -125,12 +121,13 @@ bindkey "^[[1;2A" beginning-of-line
 bindkey "^[[1;2B" end-of-line
 
 if [[ -r "$(which eza)" ]]; then
-	alias ls="eza"
+	alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 	alias ll="eza -alh"
-	alias tree="eza --tree"
+	alias tree="eza --tree --level=2"
 fi
-if [[ -r "$(which bat)" ]]; then
-	alias cat="bat -p"
+ 
+if [[ -r "$(which z)" ]]; then
+	alias cd="z"
 fi
 
 alias vi="nvim"
@@ -142,3 +139,48 @@ alias cleanderived="rm -rdf ~/Library/Developer/Xcode/DerivedData/*"
 alias screenshots="xcrun simctl status_bar booted override --time '9:41' --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4"
 
 export HOMEBREW_NO_ANALYTICS=1
+
+BAT_THEME="Catppuccin Macchiato"
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796 \
+--color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
+--color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
+--color=selected-bg:#494D64 \
+--color=border:#363A4F,label:#CAD3F5"
+bindkey "ç" fzf-cd-widget
+export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+_fzf_compgen_path() {
+	fd --hidden --exclude .git . "${1}"
+}
+_fzf_compgen_dir() {
+	fd --type=d --hidden --exclude .git . "${1}"
+}
+
+source ~/.config/zsh/custom/plugins/fzf-git.sh/fzf-git.sh
+
+export FZF_CTRL_T_OPTS="
+--walker-skip .git,node_modules,target
+--preview 'bat -n --color=always --line-range :500 {}'
+--bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always --icons=always {} | head -200'"
+
+_fzf_comprun() {
+	local command=$1
+	shift
+
+	case "$command" in
+		cd)				fzf --preview 'eza --tree --color=always --icons=always {} | head -200' "$@" ;;
+		export|unset)	fzf --preview "eval 'echo \$'{}" "$@" ;;
+		ssh)			fzf --preview 'dig {}' "$@" ;;
+		*)				fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
+	esac
+}
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/e.pelesh/.lmstudio/bin"
+# End of LM Studio CLI section
+
