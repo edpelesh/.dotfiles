@@ -126,7 +126,7 @@ if [[ -r "$(which eza)" ]]; then
 	alias tree="eza --tree --level=2"
 fi
  
-if [[ -r "$(which z)" ]]; then
+if [[ -r "$(which zoxide)" ]]; then
 	alias cd="z"
 fi
 
