@@ -15,4 +15,4 @@
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "zsh/.config/zsh/custom/plugins/fzf-git.sh"]
 	path = zsh/.config/zsh/custom/plugins/fzf-git.sh
-	url = git@github.com:junegunn/fzf-git.sh.git
+	url = https://github.com/junegunn/fzf-git.sh.git
