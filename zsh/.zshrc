@@ -180,7 +180,11 @@ _fzf_comprun() {
 	esac
 }
 
-# Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
 
+export SWIFTLY_HOME_DIR="$HOME/.local/share/swiftly"
+export SWIFTLY_BIN_DIR="$HOME/.local/share/swiftly/bin"
+export SWIFTLY_TOOLCHAINS_DIR="$HOME/.local/share/swiftly/toolchains"
+if [[ ":$PATH:" != *":$SWIFTLY_BIN_DIR:"* ]]; then
+	export PATH="$SWIFTLY_BIN_DIR:$PATH"
+fi
