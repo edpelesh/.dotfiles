@@ -40,7 +40,7 @@ update_output() {
 	case "$mode" in
 		night) icon="󰖔" ;;   # Night
 		day) icon="󰖙" ;;     # Day
-		custom) icon="󰪥" ;;  # Custom
+		custom) icon="󰖔" ;;  # Custom (Moon icon)
 	esac
 
 	local bar_len=10
@@ -57,16 +57,9 @@ update_output() {
 
 case "$1" in
 	click)
-		current_mode=$(load_state)
-		if [ "$current_mode" = "night" ]; then
-			set_identity
-			save_state "day"
-			update_output "day" "$MAX_TEMP"
-		else
-			set_temp 2500
-			save_state "night"
-			update_output "night" "2500"
-		fi
+		set_identity
+		save_state "day"
+		update_output "day" "$MAX_TEMP"
 		;;
 	scroll-up)
 		temp=$(load_temp)
