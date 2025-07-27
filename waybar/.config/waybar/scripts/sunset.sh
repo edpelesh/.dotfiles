@@ -7,7 +7,7 @@ MAX_TEMP=6500
 STEP=100
 
 load_state() {
-	[[ -f "$STATE_FILE" ]] && cat "$STATE_FILE" || echo "custom"
+	[[ -f "$STATE_FILE" ]] && cat "$STATE_FILE" || echo "day"
 }
 
 save_state() {

@@ -50,7 +50,7 @@
 		"exec": "~/.config/waybar/scripts/sunset.sh",
 		"interval": 5,
 		"return-type": "json",
-		"on-click": "~/.config/waybar/scripts/sunset.sh click",
+		"on-click": "~/.config/waybar/scripts/sunset.sh click && pkill -SIGUSR2 waybar",
 		"on-scroll-up": "~/.config/waybar/scripts/sunset.sh scroll-up",
 		"on-scroll-down": "~/.config/waybar/scripts/sunset.sh scroll-down"
 	}
