@@ -2,7 +2,6 @@
 	"layer": "bottom",
 	"position": "top",
 	"height": 48,
-	"margin": "6px 6px 0 6px",
 
 	"modules-left": [
 		"custom/hyprsunset",
