@@ -1,6 +1,11 @@
 # custom-shader = shaders/bettercrt.glsl
 theme = catppuccin-mocha
 
+macos-icon = custom-style
+macos-icon-frame = aluminum
+macos-icon-ghost-color = #A6DA95
+macos-icon-screen-color = #24273A,#24273A
+
 window-height = 36
 window-width = 120
 
@@ -14,3 +19,8 @@ focus-follows-mouse = true
 
 gtk-titlebar = true
 macos-titlebar-proxy-icon = hidden
+
+shell-integration-features = true
+
+quick-terminal-position = top
+keybind = global:shift+delete=toggle_quick_terminal
