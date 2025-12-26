@@ -188,3 +188,11 @@ export SWIFTLY_TOOLCHAINS_DIR="$HOME/.local/share/swiftly/toolchains"
 if [[ ":$PATH:" != *":$SWIFTLY_BIN_DIR:"* ]]; then
 	export PATH="$SWIFTLY_BIN_DIR:$PATH"
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/e.pelesh/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Added by Antigravity
+export PATH="/Users/e.pelesh/.antigravity/antigravity/bin:$PATH"

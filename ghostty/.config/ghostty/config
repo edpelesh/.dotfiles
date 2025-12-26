@@ -1,5 +1,5 @@
-# custom-shader = shaders/bettercrt.glsl
-theme = catppuccin-mocha
+custom-shader = shaders/bettercrt.glsl
+theme = catppuccin-mocha.conf
 
 macos-icon = custom-style
 macos-icon-frame = aluminum

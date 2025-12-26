@@ -1,7 +1,7 @@
 after-login-command = []
-after-startup-command = [
-    'exec-and-forget borders hidpi=on active_color=0xff88c35a inactive_color=0xff1e1e2e width=8.0'
-]
+#after-startup-command = [
+#    'exec-and-forget borders hidpi=on active_color=0xff88c35a inactive_color=0xff1e1e2e width=8.0'
+#]
 start-at-login = false
 
 enable-normalization-flatten-containers = true
