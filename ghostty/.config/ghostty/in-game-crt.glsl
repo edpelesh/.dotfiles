@@ -20,7 +20,7 @@
 
 // How far apart the different colors are from each other
 // x \in R
-#define COLOR_FRINGING_SPREAD 1.4
+#define COLOR_FRINGING_SPREAD 1.2
 
 // How much the ghost images are spread out
 // x \in R : x >= 0
@@ -31,18 +31,18 @@
 
 // How much of the non-linearly darkened colors are mixed in
 // [0, 1]
-#define DARKEN_MIX 0.65
+#define DARKEN_MIX 0.3
 
 // How far in the vignette spreads
 // x \in R : x >= 0
 #define VIGNETTE_SPREAD 0.2
 // How bright the vignette is
 // x \in R : x >= 0
-#define VIGNETTE_BRIGHTNESS 7.4
+#define VIGNETTE_BRIGHTNESS 4.0
 
 // Tint all colors
 // [0, 1]^3
-#define TINT 0.93, 1.00, 0.96
+#define TINT 0.97, 1.00, 0.98
 
 // How visible the scan line effect is
 // NOTE: Technically these are not scan lines, but rather the lack of them
@@ -78,7 +78,7 @@
 
 // How big the bloom is
 // x \in R : x >= 0
-#define BLOOM_SPREAD 8.0
+#define BLOOM_SPREAD 6.0
 // How visible the bloom is
 // [0, 1]
 #define BLOOM_STRENGTH 0.04
