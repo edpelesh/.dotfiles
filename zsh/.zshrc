@@ -34,8 +34,13 @@ else
 	export EDITOR='nvim'
 fi
 
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
 ZSH_CUSTOM=$ZCONFIG/custom
-ZSH_THEME="dst"
+ZSH_THEME=""
+
+autoload -U promptinit; promptinit
+prompt pure
 
 DISABLE_AUTO_UPDATE="false"
 DISABLE_UPDATE_PROMPT="true"
