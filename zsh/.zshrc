@@ -28,11 +28,6 @@ else
   SESSION_TYPE=tty
 fi
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ ! -f "${ZCONFIG}/.p10k.zsh" ]] || source "${ZCONFIG}/.p10k.zsh"
-
 if [[ -n $SSH_CONNECTION ]]; then
 	export EDITOR='vi'
 else
@@ -40,17 +35,7 @@ else
 fi
 
 ZSH_CUSTOM=$ZCONFIG/custom
-case "$SESSION_TYPE" in
-  gui)
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-    ;;
-  ssh)
-    ZSH_THEME="dst"
-    ;;
-  tty)
-    ZSH_THEME="dst"
-    ;;
-esac
+ZSH_THEME="dst"
 
 DISABLE_AUTO_UPDATE="false"
 DISABLE_UPDATE_PROMPT="true"
@@ -73,9 +58,6 @@ source $ZSH/oh-my-zsh.sh
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # Load eventually common [custom] configuration, either:
 # - generic ZSH functions defined in $ZDOTDIR/lib
@@ -180,8 +162,6 @@ _fzf_comprun() {
 	esac
 }
 
-export PATH="$PATH:$HOME/.lmstudio/bin"
-
 export SWIFTLY_HOME_DIR="$HOME/.local/share/swiftly"
 export SWIFTLY_BIN_DIR="$HOME/.local/share/swiftly/bin"
 export SWIFTLY_TOOLCHAINS_DIR="$HOME/.local/share/swiftly/toolchains"
@@ -190,9 +170,9 @@ if [[ ":$PATH:" != *":$SWIFTLY_BIN_DIR:"* ]]; then
 fi
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/e.pelesh/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
 # Added by Antigravity
-export PATH="/Users/e.pelesh/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
