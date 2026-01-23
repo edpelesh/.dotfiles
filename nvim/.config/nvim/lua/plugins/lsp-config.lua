@@ -1,64 +1,110 @@
+
 return {
-	{
-		"mason-org/mason.nvim",
-		dependencies = {
-			"mason-org/mason-lspconfig.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			local mason = require("mason")
-			local lspconfig = require("lspconfig")
-			local mason_lspconfig = require("mason-lspconfig")
+  -----------------------------------------------------------------------------
+  -- LSP servers
+  -----------------------------------------------------------------------------
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        -- Mason-managed
+        lua_ls = {},
+        gopls = {},
+        clangd = {},
 
-			mason.setup({
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
-				},
-			})
+        -- Swift (NOT managed by Mason)
+        sourcekit = {
+          filetypes = {
+            "swift",
+            "objective-c",
+            "objective-cpp",
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			mason_lspconfig.setup({
-				ensure_installed = {
-					"lua_ls",
-					"gopls",
-				},
-				automatic_installation = true,
-				automatic_enable = true,
-			})
+      for server, config in pairs(opts.servers) do
+        config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
+      end
+    end,
+  },
 
-			local servers = {
-				clangd = {},
-				sourcekit = {
-					capabilities = {
-						workspace = {
-							didChangeWatchedFiles = {
-								dynamicRegistration = true,
-							},
-						},
-					},
-				},
-			}
+  -----------------------------------------------------------------------------
+  -- Mason core
+  -----------------------------------------------------------------------------
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      },
+    },
+  },
 
-			for server, setup in pairs(servers) do
-				-- setup.handlers = handlers
-				lspconfig[server].setup(setup)
-			end
+  -----------------------------------------------------------------------------
+  -- Mason ↔ LSP bridge
+  -----------------------------------------------------------------------------
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      -- ONLY servers Mason actually installs
+      ensure_installed = {
+        "lua_ls",
+        "gopls",
+        "clangd",
+      },
+      automatic_installation = true,
+    },
+  },
 
-			local noice = require("noice.lsp")
-			vim.api.nvim_create_autocmd("LspAttach", {
-				desc = "LSP Actions",
-				callback = function()
-					vim.keymap.set("n", "K", noice.hover, {})
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
-					vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, {})
-					vim.keymap.set("n", "g]", vim.diagnostic.goto_next, {})
-					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-				end,
-			})
-		end,
-	},
+  -----------------------------------------------------------------------------
+  -- Swift tooling
+  -----------------------------------------------------------------------------
+  {
+    "mfussenegger/nvim-dap",
+  },
+
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+    ft = "swift",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      restore_session = true,
+      show_build_progress_bar = true,
+      auto_open_qf = true,
+    },
+  },
+
+  -----------------------------------------------------------------------------
+  -- LSP keymaps
+  -----------------------------------------------------------------------------
+  {
+    "folke/noice.nvim",
+    opts = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function()
+          local noice = require("noice.lsp")
+
+          vim.keymap.set("n", "K", noice.hover, { buffer = true })
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = true })
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = true })
+          vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, { buffer = true })
+          vim.keymap.set("n", "g]", vim.diagnostic.goto_next, { buffer = true })
+          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = true })
+        end,
+      })
+    end,
+  },
 }

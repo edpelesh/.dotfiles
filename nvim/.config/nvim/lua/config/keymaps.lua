@@ -39,4 +39,4 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { desc = "Neotree filesystem reveal toggle" })
 
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format code" })
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+--vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
