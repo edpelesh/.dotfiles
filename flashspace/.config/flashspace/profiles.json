@@ -1,24 +1,24 @@
 {
   "profiles" : [
     {
-      "id" : "2AE99CDD-ECCC-4BAC-96A6-19C4F12BC020",
+      "id" : "84FE63AA-8CB5-4812-B40D-A92CD9CCF783",
       "name" : "Default",
       "workspaces" : [
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.apple.Safari",
-              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
-              "name" : "Safari"
+              "bundleIdentifier" : "company.thebrowser.Browser",
+              "iconPath" : "/Applications/Arc.app/Contents/Resources/AppIcon.icns",
+              "name" : "Arc"
             }
           ],
           "assignAppShortcut" : "opt+shift+1",
-          "display" : "LG UltraFine",
-          "id" : "7F08FC2F-FE6D-4012-AA9D-403B49B2C8F1",
+          "display" : "Built-in Retina Display",
+          "id" : "D94108B2-6B8C-44B2-B84D-201EEDCB35F3",
           "name" : "Browser",
           "openAppsOnActivation" : false,
           "shortcut" : "opt+1",
-          "symbolIconName" : "1.circle.fill"
+          "symbolIconName" : "1.lane"
         },
         {
           "apps" : [
@@ -26,114 +26,123 @@
               "bundleIdentifier" : "com.apple.dt.Xcode",
               "iconPath" : "/Applications/Xcode.app/Contents/Resources/Xcode.icns",
               "name" : "Xcode"
-            },
-            {
-              "bundleIdentifier" : "com.apple.iphonesimulator",
-              "iconPath" : "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/Resources/AppIcon.icns",
-              "name" : "Simulator"
-            },
-            {
-              "bundleIdentifier" : "com.proxyman.NSProxy",
-              "iconPath" : "/Applications/Proxyman.app/Contents/Resources/AppIcon.icns",
-              "name" : "Proxyman"
             }
           ],
           "assignAppShortcut" : "opt+shift+2",
-          "display" : "LG UltraFine",
-          "id" : "941D0E1D-131E-42B4-929E-2E97C40E2939",
-          "name" : "Xcode",
+          "display" : "Built-in Retina Display",
+          "id" : "31B77297-8271-4F6B-B505-6D923A33AAAF",
+          "name" : "Code",
           "openAppsOnActivation" : false,
           "shortcut" : "opt+2",
-          "symbolIconName" : "2.circle.fill"
+          "symbolIconName" : "2.lane"
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.todesktop.230313mzl4w4u92",
-              "iconPath" : "/Applications/Cursor.app/Contents/Resources/Cursor.icns",
-              "name" : "Cursor"
-            },
             {
               "bundleIdentifier" : "com.mitchellh.ghostty",
               "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
               "name" : "Ghostty"
-            },
-            {
-              "bundleIdentifier" : "com.google.antigravity",
-              "iconPath" : "/Applications/Antigravity.app/Contents/Resources/Antigravity.icns",
-              "name" : "Antigravity"
             }
           ],
           "assignAppShortcut" : "opt+shift+3",
-          "display" : "LG UltraFine",
-          "id" : "9B7DFA9C-B0A2-45E6-AF42-073303BAA6DE",
-          "name" : "Editor",
+          "display" : "Built-in Retina Display",
+          "id" : "7FFA7872-60FD-4431-84FD-0C38EAEBAAA7",
+          "name" : "Terminal",
           "openAppsOnActivation" : false,
           "shortcut" : "opt+3",
-          "symbolIconName" : "3.circle.fill"
+          "symbolIconName" : "3.lane"
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.tinyspeck.slackmacgap",
-              "iconPath" : "/Applications/Slack.app/Contents/Resources/electron.icns",
-              "name" : "Slack"
-            },
-            {
-              "bundleIdentifier" : "com.microsoft.teams2",
-              "iconPath" : "/Applications/Microsoft Teams.app/Contents/Resources/AppIcon.icns",
-              "name" : "Microsoft Teams"
-            }
+
           ],
           "assignAppShortcut" : "opt+shift+4",
-          "display" : "LG UltraFine",
-          "id" : "D76DDECA-AD44-408C-AE1B-4B1A690B06C7",
-          "name" : "Comms",
+          "display" : "Built-in Retina Display",
+          "id" : "C26A917A-12D1-428D-B8A9-7D0623CC0D70",
+          "name" : "Chats",
           "openAppsOnActivation" : false,
           "shortcut" : "opt+4",
-          "symbolIconName" : "4.alt.circle.fill"
+          "symbolIconName" : "4.lane"
         },
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.spotify.client",
-              "iconPath" : "/Applications/Spotify.app/Contents/Resources/AppIcon.icns",
-              "name" : "Spotify"
-            },
-            {
-              "bundleIdentifier" : "com.DanPristupov.Fork",
-              "iconPath" : "/Applications/Fork.app/Contents/Resources/AppIcon.icns",
-              "name" : "Fork"
+              "bundleIdentifier" : "md.obsidian",
+              "iconPath" : "/Applications/Obsidian.app/Contents/Resources/icon.icns",
+              "name" : "Obsidian"
             }
           ],
           "assignAppShortcut" : "opt+shift+5",
-          "display" : "LG UltraFine",
-          "id" : "CC0FDA7B-7275-4710-B760-CC78D1EEB11E",
-          "name" : "Git",
+          "display" : "Built-in Retina Display",
+          "id" : "9DC28252-DCC1-451A-8884-D5554D6A3B4B",
+          "name" : "Notes",
           "openAppsOnActivation" : false,
           "shortcut" : "opt+5",
-          "symbolIconName" : "5.circle.fill"
+          "symbolIconName" : "5.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+6",
+          "display" : "Built-in Retina Display",
+          "id" : "0678EB51-1DCA-424A-985A-B4AED40A638C",
+          "name" : "Other",
+          "openAppsOnActivation" : false,
+          "shortcut" : "opt+6",
+          "symbolIconName" : "6.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+7",
+          "display" : "Built-in Retina Display",
+          "id" : "AB8725F0-7489-4EE9-A108-0D83CC4A0416",
+          "name" : "Other",
+          "openAppsOnActivation" : false,
+          "shortcut" : "opt+7",
+          "symbolIconName" : "7.lane"
         },
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.apple.mail",
-              "iconPath" : "/System/Applications/Mail.app/Contents/Resources/ApplicationIcon.icns",
-              "name" : "Mail"
-            },
-            {
-              "bundleIdentifier" : "com.microsoft.Outlook",
-              "iconPath" : "/Applications/Microsoft Outlook.app/Contents/Resources/Outlook_macOS.icns",
-              "name" : "Microsoft Outlook"
+              "bundleIdentifier" : "com.readdle.SparkDesktop",
+              "iconPath" : "/Applications/Spark Desktop.app/Contents/Resources/icon.icns",
+              "name" : "Spark Desktop"
             }
           ],
           "assignAppShortcut" : "opt+shift+8",
-          "display" : "LG UltraFine",
-          "id" : "06E9F61B-2761-4758-9DB7-FD713C0AED29",
+          "display" : "Built-in Retina Display",
+          "id" : "7D9D59C5-0C40-4069-A2F2-0D443EB4BBF1",
           "name" : "Mail",
           "openAppsOnActivation" : false,
           "shortcut" : "opt+8",
-          "symbolIconName" : "8.circle.fill"
+          "symbolIconName" : "8.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+9",
+          "display" : "Built-in Retina Display",
+          "id" : "A1163963-56E3-4BA0-A5A1-F76C7F789EF0",
+          "name" : "Other",
+          "openAppsOnActivation" : false,
+          "shortcut" : "opt+9",
+          "symbolIconName" : "9.lane"
+        },
+        {
+          "apps" : [
+
+          ],
+          "assignAppShortcut" : "opt+shift+0",
+          "display" : "Built-in Retina Display",
+          "id" : "B0AA0CF0-4F1D-496E-85E3-92A7F2074B71",
+          "name" : "Other",
+          "openAppsOnActivation" : false,
+          "shortcut" : "opt+0",
+          "symbolIconName" : "10.lane"
         }
       ]
     }
