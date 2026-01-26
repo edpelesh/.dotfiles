@@ -31,6 +31,11 @@
               "bundleIdentifier" : "com.apple.dt.Xcode",
               "iconPath" : "/Applications/Xcode.app/Contents/Resources/Xcode.icns",
               "name" : "Xcode"
+            },
+            {
+              "bundleIdentifier" : "org.godotengine.godot",
+              "iconPath" : "/Applications/Godot.app/Contents/Resources/GodotLG.icns",
+              "name" : "Godot"
             }
           ],
           "assignAppShortcut" : "opt+shift+2",
