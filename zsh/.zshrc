@@ -53,11 +53,19 @@ COMPLETION_WAITING_DOTS="false"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd.mm.yyyy"
 
+# Oh-my-zsh plugins
 plugins=()
 plugins+=(zsh-autosuggestions)
 plugins+=(zsh-syntax-highlighting)
 plugins+=(git)
 plugins+=(tmux)
+plugins+=(thefuck)
+
+MODE_INDICATOR="%F{white}%f"
+INSERT_MODE_INDICATOR="%F{yellow}<==%f"
+plugins+=(vi-mode)
+# End Oh-my-zsh plugins
+
 source $ZSH/oh-my-zsh.sh
 
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
