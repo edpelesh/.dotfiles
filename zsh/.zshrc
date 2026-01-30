@@ -61,6 +61,17 @@ plugins+=(git)
 plugins+=(tmux)
 plugins+=(thefuck)
 
+# xcb	xcodebuild
+# xcdd	rm -rf ~/Library/Developer/Xcode/DerivedData/*
+# xcp	xcode-select --print-path
+# xcsel	sudo xcode-select --switch
+# xx	open -a "Xcode.app"
+# xc	Opens the current directory in Xcode
+# simulator
+# xcselv -l
+# xcselv default
+plugins+=(xcode)
+
 MODE_INDICATOR="%F{white}%f"
 INSERT_MODE_INDICATOR="%F{yellow}<==%f"
 plugins+=(vi-mode)
@@ -129,8 +140,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias unstow='stow --delete'
 
-# Mac settings
-alias cleanderived="rm -rdf ~/Library/Developer/Xcode/DerivedData/*"
 alias screenshots="xcrun simctl status_bar booted override --time '9:41' --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4"
 
 export HOMEBREW_NO_ANALYTICS=1
