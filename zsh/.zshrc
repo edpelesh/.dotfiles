@@ -5,7 +5,19 @@ export XDG_DATA_HOME=$HOME/.local/share
 export ZCONFIG=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export ZDOTDIR=$HOME
+
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
+
+mkdir -p "$ZSH_CACHE_DIR"
+touch "$HISTFILE"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_REDUCE_BLANKS
 
 if [[ -r "$XDG_DATA_HOME/oh-my-zsh" ]]; then
   export ZSH=$XDG_DATA_HOME/oh-my-zsh
@@ -197,4 +209,9 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/edpelesh/.lmstudio/bin"
+# End of LM Studio CLI section
 
