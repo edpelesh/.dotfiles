@@ -16,3 +16,6 @@
 [submodule "zsh/.config/zsh/custom/plugins/fzf-git.sh"]
 	path = zsh/.config/zsh/custom/plugins/fzf-git.sh
 	url = https://github.com/junegunn/fzf-git.sh.git
+[submodule "zsh/.config/zsh/custom/plugins/zsh-completions"]
+	path = zsh/.config/zsh/custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
