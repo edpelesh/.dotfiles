@@ -28,14 +28,19 @@
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.apple.dt.Xcode",
-              "iconPath" : "/Applications/Xcode.app/Contents/Resources/Xcode.icns",
-              "name" : "Xcode"
+              "bundleIdentifier" : "com.apple.iphonesimulator",
+              "iconPath" : "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/Resources/AppIcon.icns",
+              "name" : "Simulator"
             },
             {
               "bundleIdentifier" : "org.godotengine.godot",
               "iconPath" : "/Applications/Godot.app/Contents/Resources/GodotLG.icns",
               "name" : "Godot"
+            },
+            {
+              "bundleIdentifier" : "com.apple.dt.Xcode",
+              "iconPath" : "/Applications/Xcode.app/Contents/Resources/Xcode.icns",
+              "name" : "Xcode"
             }
           ],
           "assignAppShortcut" : "opt+shift+2",
@@ -48,6 +53,11 @@
         },
         {
           "apps" : [
+            {
+              "bundleIdentifier" : "com.todesktop.230313mzl4w4u92",
+              "iconPath" : "/Applications/Cursor.app/Contents/Resources/Cursor.icns",
+              "name" : "Cursor"
+            },
             {
               "bundleIdentifier" : "com.mitchellh.ghostty",
               "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
@@ -89,6 +99,11 @@
               "bundleIdentifier" : "md.obsidian",
               "iconPath" : "/Applications/Obsidian.app/Contents/Resources/icon.icns",
               "name" : "Obsidian"
+            },
+            {
+              "bundleIdentifier" : "com.DanPristupov.Fork",
+              "iconPath" : "/Applications/Fork.app/Contents/Resources/AppIcon.icns",
+              "name" : "Fork"
             }
           ],
           "assignAppShortcut" : "opt+shift+5",
@@ -101,7 +116,11 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "ai.elementlabs.lmstudio",
+              "iconPath" : "/Applications/LM Studio.app/Contents/Resources/icon.icns",
+              "name" : "LM Studio"
+            }
           ],
           "assignAppShortcut" : "opt+shift+6",
           "display" : "Built-in Retina Display",
@@ -129,6 +148,11 @@
               "bundleIdentifier" : "com.readdle.SparkDesktop",
               "iconPath" : "/Applications/Spark Desktop.app/Contents/Resources/icon.icns",
               "name" : "Spark Desktop"
+            },
+            {
+              "bundleIdentifier" : "com.microsoft.Outlook",
+              "iconPath" : "/Applications/Microsoft Outlook.app/Contents/Resources/Outlook_macOS.icns",
+              "name" : "Microsoft Outlook"
             }
           ],
           "assignAppShortcut" : "opt+shift+8",
