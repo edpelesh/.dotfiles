@@ -6,7 +6,10 @@ export ZCONFIG=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export ZDOTDIR=$HOME
 
+export HISTSIZE=5000
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
+export SAVEHIST=$HISTSIZE
+export HISTDUP=erase
 
 mkdir -p "$ZSH_CACHE_DIR"
 touch "$HISTFILE"
@@ -67,11 +70,11 @@ HIST_STAMPS="dd.mm.yyyy"
 
 # Oh-my-zsh plugins
 plugins=()
-plugins+=(zsh-autosuggestions)
-plugins+=(zsh-syntax-highlighting)
 plugins+=(git)
 plugins+=(tmux)
 plugins+=(thefuck)
+plugins+=(zsh-autosuggestions)
+plugins+=(zsh-syntax-highlighting)
 
 # xcb	xcodebuild
 # xcdd	rm -rf ~/Library/Developer/Xcode/DerivedData/*
@@ -87,6 +90,11 @@ plugins+=(xcode)
 MODE_INDICATOR="%F{white}%f"
 INSERT_MODE_INDICATOR="%F{yellow}<==%f"
 plugins+=(vi-mode)
+
+# Force re-completion
+afpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
+
 # End Oh-my-zsh plugins
 
 source $ZSH/oh-my-zsh.sh
@@ -111,9 +119,6 @@ do
 	done
 	fi
 done
-
-# Force re-completion
-autoload -U compinit && compinit
 
 export PATH=/usr/local/bin:/opt/gcc-14.2.0-3-aarch64/bin/:$PATH
 if [ -d "$HOME/bin" ]; then
