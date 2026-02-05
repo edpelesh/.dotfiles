@@ -4,15 +4,16 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 export ZSH_CONFIG_DIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
-export ZDOTDIR=$HOME
 
 # Homebrew
-for brew_path in "/opt/homebrew/bin/brew" "/usr/local/bin/brew" "/home/linuxbrew/.linuxbrew/bin/brew"; do
-  if [[ -x "$brew_path" ]]; then
-    eval "$($brew_path shellenv)"
-    break
-  fi
-done
+if ! command -v brew &> /dev/null; then
+  for brew_path in "/opt/homebrew/bin/brew" "/usr/local/bin/brew" "/home/linuxbrew/.linuxbrew/bin/brew"; do
+    if [[ -x "$brew_path" ]]; then
+      eval "$($brew_path shellenv)"
+      break
+    fi
+  done
+fi
 
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
@@ -106,16 +107,24 @@ zinit cdreplay -q
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+
+typeset -U PATH path
+
+# Path exports
 if [ -d "$HOME/bin" ]; then
-	export PATH="$HOME/bin:$PATH"
+	path=("$HOME/bin" $path)
 fi
 if [ -d "$HOME/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
+	path=("$HOME/.local/bin" $path)
 fi
 if [ -d "$HOME/Library/Python/3.9/bin" ]; then
-	export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+	path+=("$HOME/Library/Python/3.9/bin")
 fi
-typeset -U PATH path
+if [[ -n "$SWIFTLY_BIN_DIR" && -d "$SWIFTLY_BIN_DIR" ]]; then
+	path=("$SWIFTLY_BIN_DIR" $path)
+fi
+export PATH
+
 
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
@@ -128,28 +137,20 @@ bindkey "^[[1;2C" forward-word
 bindkey "^[[1;2A" beginning-of-line
 bindkey "^[[1;2B" end-of-line
 
-bindkey '^P' up-line-or-beginning-search
-bindkey '^N' down-line-or-beginning-search
-
-if [[ -r "$(which eza)" ]]; then
-	alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-	alias ll="eza -alh"
-	alias tree="eza --tree --level=2"
-fi
- 
-if [[ -r "$(which zoxide)" ]]; then
-	alias cd="z"
-fi
-
+# Aliases
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ll="eza -alh"
+alias tree="eza --tree --level=2"
+alias cd="z"
 alias vi="nvim"
 alias vim="nvim"
 alias unstow='stow --delete'
-
+# Takes screenshots for simulator status bar
 alias screenshots="xcrun simctl status_bar booted override --time '9:41' --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4"
 
 export HOMEBREW_NO_ANALYTICS=1
 
-BAT_THEME="Catppuccin Macchiato"
+export BAT_THEME="Catppuccin Macchiato"
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796 \
@@ -169,7 +170,9 @@ _fzf_compgen_dir() {
 	fd --type=d --hidden --exclude .git . "${1}"
 }
 
-source "${ZSH_CUSTOM}/plugins/fzf-git.sh/fzf-git.sh"
+if [[ -f "${ZSH_CUSTOM}/plugins/fzf-git.sh/fzf-git.sh" ]]; then
+  source "${ZSH_CUSTOM}/plugins/fzf-git.sh/fzf-git.sh"
+fi
 
 export FZF_CTRL_T_OPTS="
 --walker-skip .git,node_modules,target
@@ -192,9 +195,6 @@ _fzf_comprun() {
 export SWIFTLY_HOME_DIR="$HOME/.local/share/swiftly"
 export SWIFTLY_BIN_DIR="$HOME/.local/share/swiftly/bin"
 export SWIFTLY_TOOLCHAINS_DIR="$HOME/.local/share/swiftly/toolchains"
-if [[ ":$PATH:" != *":$SWIFTLY_BIN_DIR:"* ]]; then
-	export PATH="$SWIFTLY_BIN_DIR:$PATH"
-fi
 
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
