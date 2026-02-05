@@ -1,21 +1,6 @@
-[submodule "zsh/.config/zsh/custom/themes/powerlevel10k"]
-	path = zsh/.config/zsh/custom/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
-[submodule "zsh/.config/zsh/custom/plugins/zsh-syntax-highlighting"]
-	path = zsh/.config/zsh/custom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "ghostty/.config/ghostty/shaders"]
-	path = ghostty/.config/ghostty/shaders
-	url = https://github.com/hackr-sh/ghostty-shaders
-[submodule "zsh/.config/zsh/custom/plugins/zsh-autosuggestions"]
-	path = zsh/.config/zsh/custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule "zsh/.config/zsh/custom/plugins/fzf-git.sh"]
 	path = zsh/.config/zsh/custom/plugins/fzf-git.sh
 	url = https://github.com/junegunn/fzf-git.sh.git
-[submodule "zsh/.config/zsh/custom/plugins/zsh-completions"]
-	path = zsh/.config/zsh/custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions.git

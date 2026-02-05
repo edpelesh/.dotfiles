@@ -2,16 +2,34 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
-export ZCONFIG=$XDG_CONFIG_HOME/zsh
+export ZSH_CONFIG_DIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export ZDOTDIR=$HOME
+
+# Homebrew
+for brew_path in "/opt/homebrew/bin/brew" "/usr/local/bin/brew" "/home/linuxbrew/.linuxbrew/bin/brew"; do
+  if [[ -x "$brew_path" ]]; then
+    eval "$($brew_path shellenv)"
+    break
+  fi
+done
+
+export MANPATH="/usr/local/man:$MANPATH"
+export LANG=en_US.UTF-8
+export LANGUAGE=en
+export LC_ALL="${LANG}"
+export TERM="xterm-256color"
+export GOPATH=$HOME/.local/go
 
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
 export HISTDUP=erase
 
-mkdir -p "$ZSH_CACHE_DIR"
-touch "$HISTFILE"
-HISTSIZE=50000
+if [ ! -d "$ZSH_CACHE_DIR" ]; then
+  mkdir -p "$ZSH_CACHE_DIR"
+  touch "$HISTFILE"
+fi
+
+HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 
 setopt APPEND_HISTORY
@@ -20,18 +38,9 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 
-if [[ -r "$XDG_DATA_HOME/oh-my-zsh" ]]; then
-  export ZSH=$XDG_DATA_HOME/oh-my-zsh
-else
-  export ZSH=$HOME/.oh-my-zsh
-fi
-
-export MANPATH="/usr/local/man:$MANPATH"
-export LANG=en_US.UTF-8
-export LANGUAGE=en
-export LC_ALL="${LANG}"
-export TERM="xterm-256color"
-export GOPATH=$HOME/.local/go
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
 
 if [[ -n $SSH_CONNECTION ]]; then
   SESSION_TYPE=ssh
@@ -42,37 +51,37 @@ else
 fi
 
 if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vi'
+  export EDITOR='vi'
 else
-	export EDITOR='nvim'
+  export EDITOR='nvim'
 fi
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+ZSH_CUSTOM=$ZSH_CONFIG_DIR/custom
 
-ZSH_CUSTOM=$ZCONFIG/custom
-ZSH_THEME=""
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-autoload -U promptinit; promptinit
-prompt pure
+zi ice from'gh' as'program' sbin'**/eza -> eza' atclone'CARGO_HOME=$ZPFX cargo install --path . && cp -vf completions/eza.zsh _eza'
+zi light eza-community/eza
 
-DISABLE_AUTO_UPDATE="false"
-DISABLE_UPDATE_PROMPT="true"
-UPDATE_ZSH_DAYS=7
+zi ice pick"async.zsh" src"pure.zsh"
+zi light sindresorhus/pure
 
-CASE_SENSITIVE="false"
-HYPHEN_INSENSITIVE="true"
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
-COMPLETION_WAITING_DOTS="false"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-HIST_STAMPS="dd.mm.yyyy"
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light Aloxaf/fzf-tab
 
-# Oh-my-zsh plugins
-plugins=()
-plugins+=(git)
-plugins+=(tmux)
-plugins+=(thefuck)
-plugins+=(zsh-autosuggestions)
-plugins+=(zsh-syntax-highlighting)
+zi snippet OMZP::git
+zi snippet OMZP::tmux
+zi snippet OMZP::thefuck
+zi snippet OMZP::command-not-found
 
 # xcb	xcodebuild
 # xcdd	rm -rf ~/Library/Developer/Xcode/DerivedData/*
@@ -83,42 +92,16 @@ plugins+=(zsh-syntax-highlighting)
 # simulator
 # xcselv -l
 # xcselv default
-plugins+=(xcode)
-
-MODE_INDICATOR="%F{white}%f"
-INSERT_MODE_INDICATOR="%F{yellow}<==%f"
-plugins+=(vi-mode)
+zi snippet OMZP::xcode
 
 # Force re-completion
-afpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 autoload -U compinit && compinit
-
-# End Oh-my-zsh plugins
-
-source $ZSH/oh-my-zsh.sh
+zinit cdreplay -q
 
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-# Load eventually common [custom] configuration, either:
-# - generic ZSH functions defined in $ZDOTDIR/lib
-# - common to all shells (from ~/.config/shell/[custom/]*.sh typically)
-# - specific custom to zsh (from ~/.config/zsh/custom/*.zsh
-for d in \
-${ZDOTDIR}/lib \
-${XDG_CONFIG_HOME}/shell \
-${XDG_CONFIG_HOME}/shell/custom \
-${ZDOTDIR}/custom
-do
-	if [ -d "${d}" ]; then
-		for f in ${d}/*.(sh|zsh)(N); do
-			[[ -r "$f" ]] && source $f
-	done
-	fi
-done
-
-export PATH=/usr/local/bin:/opt/gcc-14.2.0-3-aarch64/bin/:$PATH
 if [ -d "$HOME/bin" ]; then
 	export PATH="$HOME/bin:$PATH"
 fi
@@ -179,7 +162,7 @@ _fzf_compgen_dir() {
 	fd --type=d --hidden --exclude .git . "${1}"
 }
 
-source ~/.config/zsh/custom/plugins/fzf-git.sh/fzf-git.sh
+source "${ZSH_CUSTOM}/plugins/fzf-git.sh/fzf-git.sh"
 
 export FZF_CTRL_T_OPTS="
 --walker-skip .git,node_modules,target
@@ -212,9 +195,3 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/edpelesh/.lmstudio/bin"
-# End of LM Studio CLI section
-
