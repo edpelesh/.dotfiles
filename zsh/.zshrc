@@ -36,7 +36,11 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -124,6 +128,9 @@ bindkey "^[[1;2C" forward-word
 bindkey "^[[1;2A" beginning-of-line
 bindkey "^[[1;2B" end-of-line
 
+bindkey '^P' up-line-or-beginning-search
+bindkey '^N' down-line-or-beginning-search
+
 if [[ -r "$(which eza)" ]]; then
 	alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 	alias ll="eza -alh"
@@ -189,9 +196,6 @@ if [[ ":$PATH:" != *":$SWIFTLY_BIN_DIR:"* ]]; then
 	export PATH="$SWIFTLY_BIN_DIR:$PATH"
 fi
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
