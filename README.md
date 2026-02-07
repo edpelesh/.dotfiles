@@ -1,5 +1,3 @@
-# Clean Mac Install
-
 ### Settings
 
 First consider checking the system settings. 
@@ -26,7 +24,7 @@ defaults write -g NSWindowShouldDragOnGesture -bool true
 ### Install the Command Line Tools package in Terminal
 
 ```bash
-xcode-select --install`
+xcode-select --install
 ```
 
 After that you need to restore ssh config and keys before cloning dotfiles:
@@ -36,12 +34,13 @@ git submodule update --init --recursive
 ```
 
 ---
-### Homebrew and Oh My ZSH!
+### Oh My ZSH! (___optional___)
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+### Apps
 ```bash
 brew analytics off
 brew install --cask font-caskaydia-cove-nerd-font
@@ -53,14 +52,17 @@ brew install --cask cyberduck
 brew install --cask ghostty
 brew install --cask tg-pro
 brew install gemini-cli
+brew install immich-go
 brew install syncthing
 brew install fastfetch
 brew install obsidian
+brew install posting
+brew install ripgrep
 brew install lazygit
+brew install thefuck
 brew install zoxide
 brew install node
 brew install stow
-brew install pure
 brew install yazi
 brew install nvim
 brew install tmux
