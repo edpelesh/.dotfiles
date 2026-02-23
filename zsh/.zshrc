@@ -199,3 +199,4 @@ export SWIFTLY_TOOLCHAINS_DIR="$HOME/.local/share/swiftly/toolchains"
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
+echo "$bold_color$fg[cyan]+$fg[magenta]mlook$reset_color"

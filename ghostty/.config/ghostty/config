@@ -1,4 +1,4 @@
-custom-shader = in-game-crt.glsl
+#custom-shader = in-game-crt.glsl
 theme = catppuccin-mocha.conf
 
 title = " "
