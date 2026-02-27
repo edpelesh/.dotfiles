@@ -20,6 +20,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en
 export LC_ALL="${LANG}"
 export TERM="xterm-256color"
+export ZSH_TMUX_FIXTERM=false
 export GOPATH=$HOME/.local/go
 
 export HISTFILE=$ZSH_CACHE_DIR/zhistory
