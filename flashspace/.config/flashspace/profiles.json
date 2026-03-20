@@ -15,6 +15,11 @@
               "bundleIdentifier" : "com.apple.Safari",
               "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
               "name" : "Safari"
+            },
+            {
+              "bundleIdentifier" : "com.apple.iphonesimulator",
+              "iconPath" : "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/Resources/AppIcon.icns",
+              "name" : "Simulator"
             }
           ],
           "assignAppShortcut" : "opt+shift+1",
@@ -33,19 +38,19 @@
               "name" : "Godot"
             },
             {
-              "bundleIdentifier" : "com.apple.dt.Xcode",
-              "iconPath" : "/Applications/Xcode.app/Contents/Resources/Xcode.icns",
-              "name" : "Xcode"
-            },
-            {
               "bundleIdentifier" : "com.google.antigravity",
               "iconPath" : "/Applications/Antigravity.app/Contents/Resources/Antigravity.icns",
               "name" : "Antigravity"
             },
             {
-              "bundleIdentifier" : "com.apple.iphonesimulator",
-              "iconPath" : "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/Resources/AppIcon.icns",
-              "name" : "Simulator"
+              "bundleIdentifier" : "com.apple.dt.Xcode",
+              "iconPath" : "/Applications/Xcode.app/Contents/Resources/Xcode.icns",
+              "name" : "Xcode"
+            },
+            {
+              "bundleIdentifier" : "ai.elementlabs.lmstudio",
+              "iconPath" : "/Applications/LM Studio.app/Contents/Resources/icon.icns",
+              "name" : "LM Studio"
             }
           ],
           "assignAppShortcut" : "opt+shift+2",
@@ -64,9 +69,9 @@
               "name" : "Cursor"
             },
             {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
+              "bundleIdentifier" : "com.postmanlabs.mac",
+              "iconPath" : "/Applications/Postman.app/Contents/Resources/app.icns",
+              "name" : "Postman"
             },
             {
               "bundleIdentifier" : "com.proxyman.NSProxy",
@@ -74,9 +79,19 @@
               "name" : "Proxyman"
             },
             {
-              "bundleIdentifier" : "com.postmanlabs.mac",
-              "iconPath" : "/Applications/Postman.app/Contents/Resources/app.icns",
-              "name" : "Postman"
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
+            },
+            {
+              "bundleIdentifier" : "com.charcoaldesign.SwiftFormat-for-Xcode",
+              "iconPath" : "/Applications/SwiftFormat for Xcode.app/Contents/Resources/AppIcon.icns",
+              "name" : "SwiftFormat for Xcode"
+            },
+            {
+              "bundleIdentifier" : "com.openai.codex",
+              "iconPath" : "/Applications/Codex.app/Contents/Resources/electron.icns",
+              "name" : "Codex"
             }
           ],
           "assignAppShortcut" : "opt+shift+3",
@@ -131,11 +146,7 @@
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "ai.elementlabs.lmstudio",
-              "iconPath" : "/Applications/LM Studio.app/Contents/Resources/icon.icns",
-              "name" : "LM Studio"
-            }
+
           ],
           "assignAppShortcut" : "opt+shift+6",
           "display" : "Built-in Retina Display",

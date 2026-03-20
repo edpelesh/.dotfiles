@@ -1,10 +1,15 @@
 {
   "activeWorkspaceOnFocusChange" : true,
   "alternativeDisplays" : "",
+  "autoAssignAlreadyAssignedApps" : false,
+  "autoAssignAppsToWorkspaces" : false,
   "centerCursorOnFocusChange" : false,
   "centerCursorOnWorkspaceChange" : false,
   "changeWorkspaceOnAppAssign" : true,
   "checkForUpdatesAutomatically" : true,
+  "cornerHiddenApps" : [
+
+  ],
   "displayMode" : "dynamic",
   "enableFocusManagement" : true,
   "enableIntegrations" : false,
@@ -14,6 +19,18 @@
   "enableSpaceControlTilesAnimations" : true,
   "enableSwipeGestures" : false,
   "enableWorkspaceTransitions" : false,
+  "floatingApps" : [
+    {
+      "bundleIdentifier" : "md.obsidian",
+      "iconPath" : "/Applications/Obsidian.app/Contents/Resources/icon.icns",
+      "name" : "Obsidian"
+    },
+    {
+      "bundleIdentifier" : "com.apple.iphonesimulator",
+      "iconPath" : "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/Resources/AppIcon.icns",
+      "name" : "Simulator"
+    }
+  ],
   "focusDown" : "opt+j",
   "focusFrontmostWindow" : false,
   "focusLeft" : "opt+h",
@@ -37,6 +54,7 @@
   "showFloatingNotifications" : true,
   "showMenuBarIcon" : true,
   "showMenuBarTitle" : false,
+  "showRecentWorkspaceWhenActivatedTwice" : false,
   "skipEmptyWorkspacesOnSwitch" : false,
   "spaceControlCurrentDisplayWorkspaces" : false,
   "spaceControlHideEmptyWorkspaces" : false,

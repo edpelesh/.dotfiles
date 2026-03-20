@@ -101,6 +101,12 @@ zi snippet OMZP::command-not-found
 zi snippet OMZP::xcode
 
 # Force re-completion
+# Remove stale zinit completion symlinks to avoid compinit load errors.
+if [[ -d "${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/completions" ]]; then
+  for zcomp in "${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/completions"/_*(N); do
+    [[ -L "$zcomp" && ! -e "$zcomp" ]] && rm -f -- "$zcomp"
+  done
+fi
 autoload -U compinit && compinit
 zinit cdreplay -q
 
