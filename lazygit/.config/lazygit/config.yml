@@ -1,0 +1,6 @@
+git:
+  pagers:
+    - pager: FORCE_COLOR=3 critique --stdin
+      colorArg: never
+gui:
+  nerdFontsVersion: "3"
