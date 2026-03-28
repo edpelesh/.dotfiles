@@ -156,6 +156,7 @@ alias unstow='stow --delete'
 alias screenshots="xcrun simctl status_bar booted override --time '9:41' --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4"
 
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
 
 export BAT_THEME="Catppuccin Macchiato"
 
@@ -207,3 +208,4 @@ export SWIFTLY_TOOLCHAINS_DIR="$HOME/.local/share/swiftly/toolchains"
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 echo "$bold_color$fg[cyan]+$fg[magenta]mlook$reset_color"
+
